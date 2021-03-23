@@ -2,10 +2,10 @@
 #define VENTANAINICIO_H
 
 #include <QWidget>
-#include<iostream>
+#include <iostream>
 #include <cstdlib>
 #include <vector>
-#include<string>
+#include <string>
 using namespace std;
 
 QT_BEGIN_NAMESPACE
@@ -19,7 +19,7 @@ class VentanaInicio : public QWidget
 public:
     VentanaInicio(QWidget *parent = nullptr);
     ~VentanaInicio();
-    string*  split(string *texto);
+    vector<string> split(string str, char pattern);
 
 private slots:
     void on_buttonLeer_clicked();
