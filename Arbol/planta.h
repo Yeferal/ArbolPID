@@ -15,6 +15,7 @@
 #include <unistd.h>
 
 #include "rama.h"
+#include "ui_ventanainicio.h"
 using namespace std;
 
 class Planta
@@ -23,11 +24,15 @@ public:
     Planta();
     Planta(int, int, int);
     Planta(int, int, int, pid_t);
+    Planta(int, int, int, pid_t, Ui::VentanaInicio*);
+    void setUI(Ui::VentanaInicio*);
     void setLabel(QLabel*);
     void setNumeroPlanta(int);
     void setNumeroRamas(int);
     void setNumeroHojas(int);
     void setPid(pid_t);
+    void pintar();
+    QLabel* buscarLabel(int id);
     QLabel* getLabel();
     int getNumeroPlanta();
     int getNumeroRamas();
@@ -35,7 +40,7 @@ public:
     void crearRamas(int ramas, int hojas);
     pid_t getPid();
     vector<Rama> listaRamas;
-
+    Ui::VentanaInicio* ventanaInicio;
 
 private:
     int plantaPID;

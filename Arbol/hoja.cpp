@@ -10,6 +10,17 @@ Hoja::Hoja(int numeroHoja, pid_t miPid){
     this->miPid = miPid;
 }
 
+void Hoja::setUI(Ui::VentanaInicio * ventanaInicio){
+    this->ventanaInicio = ventanaInicio;
+}
+
+
+void Hoja::pintar(){
+    label->setStyleSheet("QLabel { background-color : red;}");
+    label->setVisible(true);
+    qApp->processEvents();
+}
+
 
 void Hoja::setPadreInt(int padreInt){
     this->padreInt = padreInt;

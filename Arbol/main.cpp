@@ -23,6 +23,12 @@ int main(int argc, char *argv[])
     w.show();
 
     cout<<"Padre: "<<getpid()<<endl;
+/*
+    for (int i = 1; i<11 ;i++ ) {
+        for (int j = 1;j<11 ;j++ ) {
+            cout<<"ui->label_R"<<i<<"_h"<<j<<"->setVisible(false);"<<endl;
+        }
+    }*/
 
     return a.exec();
 }

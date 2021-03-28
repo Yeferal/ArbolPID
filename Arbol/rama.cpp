@@ -12,6 +12,10 @@ Rama::Rama(int numeroRama, int numHojas, pid_t miPid){
     crearHojas(numHojas);
 }
 
+void Rama::setUI(Ui::VentanaInicio * ventanaInicio){
+    this->ventanaInicio = ventanaInicio;
+}
+
 void Rama::crearHojas(int hojas){
     int longHojas = listaHojas.size();
     if(hojas<10){
@@ -19,15 +23,17 @@ void Rama::crearHojas(int hojas){
             //int diferencia = ramas - longRamas;
             int padre = 1;
             cout<<"Total de  hojas: "<<hojas<<endl;
-            for (int i = longHojas; i<hojas; i++) {
-                if (padre==1) {
-                    pid_t hojaNueva;
-                    if ((hojaNueva = fork())==0) {
-                        Hoja* nuevaHoja = new Hoja(i+1,hojaNueva);
-                        listaHojas.push_back(*nuevaHoja);
-                        padre = 0;
-                    }else{
-                        padre = 1;
+            if(miPid==0){
+                for (int i = longHojas; i<hojas; i++) {
+                    if (padre==1) {
+                        pid_t hojaNueva;
+                        if ((hojaNueva = fork())==0) {
+                            Hoja* nuevaHoja = new Hoja(i+1,hojaNueva);
+                            listaHojas.push_back(*nuevaHoja);
+                            padre = 0;
+                        }else{
+                            padre = 1;
+                        }
                     }
                 }
             }
@@ -37,7 +43,11 @@ void Rama::crearHojas(int hojas){
     }
 }
 
-
+void Rama::pintar(){
+    label->setStyleSheet("QLabel { background-color : blue;}");
+    label->setVisible(true);
+    qApp->processEvents();
+}
 
 void Rama::setPadreInt(int padreInt){
     this->padreInt = padreInt;

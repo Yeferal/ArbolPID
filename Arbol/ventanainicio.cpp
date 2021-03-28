@@ -60,6 +60,107 @@ void VentanaInicio::ocultarPlanta(){
     ui->labelRama9->setVisible(false);
     ui->labelRama10->setVisible(false);
     ui->labelTronco->setVisible(false);
+    ui->label_R1_h1->setVisible(false);
+    ui->label_R1_h1->setVisible(false);
+    ui->label_R1_h2->setVisible(false);
+    ui->label_R1_h3->setVisible(false);
+    ui->label_R1_h4->setVisible(false);
+    ui->label_R1_h5->setVisible(false);
+    ui->label_R1_h6->setVisible(false);
+    ui->label_R1_h7->setVisible(false);
+    ui->label_R1_h8->setVisible(false);
+    ui->label_R1_h9->setVisible(false);
+    ui->label_R1_h10->setVisible(false);
+    ui->label_R2_h1->setVisible(false);
+    ui->label_R2_h2->setVisible(false);
+    ui->label_R2_h3->setVisible(false);
+    ui->label_R2_h4->setVisible(false);
+    ui->label_R2_h5->setVisible(false);
+    ui->label_R2_h6->setVisible(false);
+    ui->label_R2_h7->setVisible(false);
+    ui->label_R2_h8->setVisible(false);
+    ui->label_R2_h9->setVisible(false);
+    ui->label_R2_h10->setVisible(false);
+    ui->label_R3_h1->setVisible(false);
+    ui->label_R3_h2->setVisible(false);
+    ui->label_R3_h3->setVisible(false);
+    ui->label_R3_h4->setVisible(false);
+    ui->label_R3_h5->setVisible(false);
+    ui->label_R3_h6->setVisible(false);
+    ui->label_R3_h7->setVisible(false);
+    ui->label_R3_h8->setVisible(false);
+    ui->label_R3_h9->setVisible(false);
+    ui->label_R3_h10->setVisible(false);
+    ui->label_R4_h1->setVisible(false);
+    ui->label_R4_h2->setVisible(false);
+    ui->label_R4_h3->setVisible(false);
+    ui->label_R4_h4->setVisible(false);
+    ui->label_R4_h5->setVisible(false);
+    ui->label_R4_h6->setVisible(false);
+    ui->label_R4_h7->setVisible(false);
+    ui->label_R4_h8->setVisible(false);
+    ui->label_R4_h9->setVisible(false);
+    ui->label_R4_h10->setVisible(false);
+    ui->label_R5_h1->setVisible(false);
+    ui->label_R5_h2->setVisible(false);
+    ui->label_R5_h3->setVisible(false);
+    ui->label_R5_h4->setVisible(false);
+    ui->label_R5_h5->setVisible(false);
+    ui->label_R5_h6->setVisible(false);
+    ui->label_R5_h7->setVisible(false);
+    ui->label_R5_h8->setVisible(false);
+    ui->label_R5_h9->setVisible(false);
+    ui->label_R5_h10->setVisible(false);
+    ui->label_R6_h1->setVisible(false);
+    ui->label_R6_h2->setVisible(false);
+    ui->label_R6_h3->setVisible(false);
+    ui->label_R6_h4->setVisible(false);
+    ui->label_R6_h5->setVisible(false);
+    ui->label_R6_h6->setVisible(false);
+    ui->label_R6_h7->setVisible(false);
+    ui->label_R6_h8->setVisible(false);
+    ui->label_R6_h9->setVisible(false);
+    ui->label_R6_h10->setVisible(false);
+    ui->label_R7_h1->setVisible(false);
+    ui->label_R7_h2->setVisible(false);
+    ui->label_R7_h3->setVisible(false);
+    ui->label_R7_h4->setVisible(false);
+    ui->label_R7_h5->setVisible(false);
+    ui->label_R7_h6->setVisible(false);
+    ui->label_R7_h7->setVisible(false);
+    ui->label_R7_h8->setVisible(false);
+    ui->label_R7_h9->setVisible(false);
+    ui->label_R7_h10->setVisible(false);
+    ui->label_R8_h1->setVisible(false);
+    ui->label_R8_h2->setVisible(false);
+    ui->label_R8_h3->setVisible(false);
+    ui->label_R8_h4->setVisible(false);
+    ui->label_R8_h5->setVisible(false);
+    ui->label_R8_h6->setVisible(false);
+    ui->label_R8_h7->setVisible(false);
+    ui->label_R8_h8->setVisible(false);
+    ui->label_R8_h9->setVisible(false);
+    ui->label_R8_h10->setVisible(false);
+    ui->label_R9_h1->setVisible(false);
+    ui->label_R9_h2->setVisible(false);
+    ui->label_R9_h3->setVisible(false);
+    ui->label_R9_h4->setVisible(false);
+    ui->label_R9_h5->setVisible(false);
+    ui->label_R9_h6->setVisible(false);
+    ui->label_R9_h7->setVisible(false);
+    ui->label_R9_h8->setVisible(false);
+    ui->label_R9_h9->setVisible(false);
+    ui->label_R9_h10->setVisible(false);
+    ui->label_R10_h1->setVisible(false);
+    ui->label_R10_h2->setVisible(false);
+    ui->label_R10_h3->setVisible(false);
+    ui->label_R10_h4->setVisible(false);
+    ui->label_R10_h5->setVisible(false);
+    ui->label_R10_h6->setVisible(false);
+    ui->label_R10_h7->setVisible(false);
+    ui->label_R10_h8->setVisible(false);
+    ui->label_R10_h9->setVisible(false);
+    ui->label_R10_h10->setVisible(false);
 
 }
 
@@ -188,23 +289,33 @@ mostrarTronco();
         int padre;
         padre = 1;
         pid_t padreR = fork();
+        cout<<"Éste es el proceso hijo: "<<getpid();
+        cout<<",\tpadre: "<<getppid()<<"\t primer fork: "<<padreR<<endl;
         //fork();
-        for (i=0; i < 3; i++){
-            if (padre == 1){
-                if (fork() == 0){ /* Proceso hijo */
-                    //fprintf(stdout, "Éste es el proceso hijo con padre %ld\n",(long)getppid());
-                    padre = 0;
+        if(padreR==0){
+            for (i=0; i < 3; i++){
+                if (padre == 1){
+                    if (fork() == 0){ /* Proceso hijo */
+                        //fprintf(stdout, "Éste es el proceso hijo con padre %ld\n",(long)getppid());
+                        cout<<"Éste es el proceso hijo: "<<getpid();
+                        cout<<",\tpadre: "<<getppid()<<"\t  phijo"<<endl;
+                        padre = 0;
 
-                }else{ /* Proceso padre */
-                    //fprintf(stdout, "Éste es el proceso padre con ID %ld\n",(long)getpid());
-                    padre = 1;
-                    //break;
-                }
-                if(getppid()==padreR){
-                    i=4;
+                    }else{ /* Proceso padre */
+                        //fprintf(stdout, "Éste es el proceso padre con ID %ld\n",(long)getpid());
+                        padre = 1;
+                        cout<<"Éste es el proceso hijo: "<<getpid();
+                        cout<<",\tpadre: "<<getppid()<<"\t  ppadre"<<endl;
+                        //break;
+                    }
+                    /*if(getppid()==padreR){
+                        i=4;
+                        cout<<"PADRE"<<endl;
+                    }*/
                 }
             }
         }
+        qApp->processEvents();
 
     }
 }

@@ -33,7 +33,7 @@ void Creador::insertarDatos(vector<string> datos){
         textMsj += "-------------------------------------------------\n";
         textMsj += "Crea la planta numero: "+datos.at(1);
         ventanaInicio->textEditInfo->setText(textMsj.c_str());
-
+        //cout<<textMsj<<endl;
         int valued = atoi(datos.at(1).c_str());
         if(!buscarPlanta(valued)){
            crearPlanta(valued,0,0);
@@ -107,7 +107,13 @@ void Creador::crearPlanta(int numPlanta, int ramas, int hojas){
     cout<<"Planta: "<<numPlanta<<endl;
     if(numPlanta>0 && numPlanta<11){
         pid_t padreTronco = fork();
-        Planta* nuevaPlanta = new Planta(numPlanta, ramas, hojas, padreTronco);
+        Planta* nuevaPlanta = new Planta(numPlanta, ramas, hojas, padreTronco, ventanaInicio);
+        //Planta* nuevaPlanta = new Planta(numPlanta, ramas, hojas, padreTronco);
+        //nuevaPlanta->setUI(ventanaInicio);
+        nuevaPlanta->setLabel(ventanaInicio->labelTronco);
+        nuevaPlanta->pintar();
+        //nuevaPlanta->crearRamas(ramas,hojas);
+        //qApp->processEvents();
         /*int padre = 1;
         for (int i = 0; i<ramas ; i++) {
             if (padre==1) {

@@ -15,6 +15,7 @@
 #include <unistd.h>
 
 #include "hoja.h"
+#include "ui_ventanainicio.h"
 using namespace std;
 
 class Rama
@@ -23,6 +24,7 @@ public:
     Rama();
     Rama(int numeroRama, int numHojas, pid_t padrePid, pid_t miPid);
     Rama(int numeroRama, int numHojas, pid_t miPid);
+    void setUI(Ui::VentanaInicio*);
     void setPadreInt(int);
     void setMiPidInt(int);
     void setNumHojas(int);
@@ -35,10 +37,11 @@ public:
     int getMiPidInt();
     int getNumHojas();
     int getNumeroRama();
+    void pintar();
     pid_t getPadrePid();
     pid_t getMiPid();
     QLabel* getLabel();
-
+    Ui::VentanaInicio* ventanaInicio;
     vector<Hoja> listaHojas;
 
 private:
