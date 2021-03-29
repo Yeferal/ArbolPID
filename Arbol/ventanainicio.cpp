@@ -236,12 +236,17 @@ void VentanaInicio::on_buttonLeer_clicked()
             if(resultados.at(0)=="P"){
                 creador.insertarDatos(resultados);
             }else if(resultados.at(0)=="M"){
+                ocultarPlanta();
                 creador.mostrarPlanta(resultados);
             }else if(resultados.at(0)=="I"){
                 char* txtArch = readOutput("pstree -c | grep Arbol");
                 //string* sttxtArch = txtArch;
                 cout<<txtArch<<endl;
                 escribir(txtArch);
+                text = ""+ui->textEditInfo->toPlainText().toStdString()+"\n";
+                text += "-------------------------------------------------\n";
+                text += "Salida archivo: Salida.tx\nlocal"+ui->textEditComandos->toPlainText().toStdString()+"\n";
+                ui->textEditInfo->setText(text.c_str());
             }else{
                 text = ""+ui->textEditInfo->toPlainText().toStdString()+"\n";
                 text += "-------------------------------------------------\n";

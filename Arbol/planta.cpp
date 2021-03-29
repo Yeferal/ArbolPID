@@ -35,7 +35,7 @@ void Planta::setUI(Ui::VentanaInicio * ventanaInicio){
 void Planta::crearRamas(int ramas, int hojas){
     int longRamas = listaRamas.size();
     //ventanaInicio->labelRama2->setVisible(true);
-    if(ramas<11){
+    if(ramas<6){
         if(longRamas<ramas){
             //int diferencia = ramas - longRamas;
             int padre = 1;

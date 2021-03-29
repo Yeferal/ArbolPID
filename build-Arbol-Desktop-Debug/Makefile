@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = Arbol1.0.0
-DISTDIR = /home/alvarados/Documentos/OS\ 1/Proyecto\ 1/build-Arbol-Desktop-Debug/.tmp/Arbol1.0.0
+DISTDIR = /home/alvarados/Documentos/OS\ 1/Proyecto\ 1/ArbolPID/build-Arbol-Desktop-Debug/.tmp/Arbol1.0.0
 LINK          = g++
 LFLAGS        = 
 LIBS          = $(SUBLIBS) /usr/lib/libQt5Widgets.so /usr/lib/libQt5Gui.so /usr/lib/libQt5Core.so -lGL -lpthread   
@@ -52,9 +52,17 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../Arbol/main.cpp \
+SOURCES       = ../Arbol/creador.cpp \
+		../Arbol/hoja.cpp \
+		../Arbol/main.cpp \
+		../Arbol/planta.cpp \
+		../Arbol/rama.cpp \
 		../Arbol/ventanainicio.cpp moc_ventanainicio.cpp
-OBJECTS       = main.o \
+OBJECTS       = creador.o \
+		hoja.o \
+		main.o \
+		planta.o \
+		rama.o \
 		ventanainicio.o \
 		moc_ventanainicio.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
@@ -302,6 +310,7 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/qt_config.prf \
 		/usr/lib/qt/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/qt/mkspecs/features/spec_post.prf \
+		../Arbol/.qmake.stash \
 		/usr/lib/qt/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/qt/mkspecs/features/toolchain.prf \
 		/usr/lib/qt/mkspecs/features/default_pre.prf \
@@ -322,7 +331,15 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/exceptions.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
-		../Arbol/Arbol.pro ../Arbol/ventanainicio.h ../Arbol/main.cpp \
+		../Arbol/Arbol.pro ../Arbol/creador.h \
+		../Arbol/hoja.h \
+		../Arbol/planta.h \
+		../Arbol/rama.h \
+		../Arbol/ventanainicio.h ../Arbol/creador.cpp \
+		../Arbol/hoja.cpp \
+		../Arbol/main.cpp \
+		../Arbol/planta.cpp \
+		../Arbol/rama.cpp \
 		../Arbol/ventanainicio.cpp
 QMAKE_TARGET  = Arbol
 DESTDIR       = 
@@ -580,6 +597,7 @@ Makefile: ../Arbol/Arbol.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/q
 		/usr/lib/qt/mkspecs/features/qt_config.prf \
 		/usr/lib/qt/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/qt/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/lib/qt/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/qt/mkspecs/features/toolchain.prf \
 		/usr/lib/qt/mkspecs/features/default_pre.prf \
@@ -847,6 +865,7 @@ Makefile: ../Arbol/Arbol.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/q
 /usr/lib/qt/mkspecs/features/qt_config.prf:
 /usr/lib/qt/mkspecs/linux-g++/qmake.conf:
 /usr/lib/qt/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /usr/lib/qt/mkspecs/features/exclusive_builds.prf:
 /usr/lib/qt/mkspecs/features/toolchain.prf:
 /usr/lib/qt/mkspecs/features/default_pre.prf:
@@ -883,8 +902,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Arbol/ventanainicio.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Arbol/main.cpp ../Arbol/ventanainicio.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Arbol/creador.h ../Arbol/hoja.h ../Arbol/planta.h ../Arbol/rama.h ../Arbol/ventanainicio.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Arbol/creador.cpp ../Arbol/hoja.cpp ../Arbol/main.cpp ../Arbol/planta.cpp ../Arbol/rama.cpp ../Arbol/ventanainicio.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Arbol/ventanainicio.ui $(DISTDIR)/
 
 
@@ -921,9 +940,14 @@ compiler_moc_header_make_all: moc_ventanainicio.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_ventanainicio.cpp
 moc_ventanainicio.cpp: ../Arbol/ventanainicio.h \
+		../Arbol/rama.h \
+		../Arbol/hoja.h \
+		ui_ventanainicio.h \
+		../Arbol/creador.h \
+		../Arbol/planta.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include '/home/alvarados/Documentos/OS 1/Proyecto 1/build-Arbol-Desktop-Debug/moc_predefs.h' -I/usr/lib/qt/mkspecs/linux-g++ -I'/home/alvarados/Documentos/OS 1/Proyecto 1/Arbol' -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.2.0 -I/usr/include/c++/10.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed -I/usr/include ../Arbol/ventanainicio.h -o moc_ventanainicio.cpp
+	/usr/bin/moc $(DEFINES) --include '/home/alvarados/Documentos/OS 1/Proyecto 1/ArbolPID/build-Arbol-Desktop-Debug/moc_predefs.h' -I/usr/lib/qt/mkspecs/linux-g++ -I'/home/alvarados/Documentos/OS 1/Proyecto 1/ArbolPID/Arbol' -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.2.0 -I/usr/include/c++/10.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed -I/usr/include ../Arbol/ventanainicio.h -o moc_ventanainicio.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -946,11 +970,42 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-main.o: ../Arbol/main.cpp ../Arbol/ventanainicio.h
+creador.o: ../Arbol/creador.cpp ../Arbol/creador.h \
+		ui_ventanainicio.h \
+		../Arbol/planta.h \
+		../Arbol/rama.h \
+		../Arbol/hoja.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o creador.o ../Arbol/creador.cpp
+
+hoja.o: ../Arbol/hoja.cpp ../Arbol/hoja.h \
+		ui_ventanainicio.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o hoja.o ../Arbol/hoja.cpp
+
+main.o: ../Arbol/main.cpp ../Arbol/ventanainicio.h \
+		../Arbol/rama.h \
+		../Arbol/hoja.h \
+		ui_ventanainicio.h \
+		../Arbol/creador.h \
+		../Arbol/planta.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Arbol/main.cpp
 
-ventanainicio.o: ../Arbol/ventanainicio.cpp ../Arbol/ventanainicio.h \
+planta.o: ../Arbol/planta.cpp ../Arbol/planta.h \
+		../Arbol/rama.h \
+		../Arbol/hoja.h \
 		ui_ventanainicio.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o planta.o ../Arbol/planta.cpp
+
+rama.o: ../Arbol/rama.cpp ../Arbol/rama.h \
+		../Arbol/hoja.h \
+		ui_ventanainicio.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rama.o ../Arbol/rama.cpp
+
+ventanainicio.o: ../Arbol/ventanainicio.cpp ../Arbol/ventanainicio.h \
+		../Arbol/rama.h \
+		../Arbol/hoja.h \
+		ui_ventanainicio.h \
+		../Arbol/creador.h \
+		../Arbol/planta.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ventanainicio.o ../Arbol/ventanainicio.cpp
 
 moc_ventanainicio.o: moc_ventanainicio.cpp 

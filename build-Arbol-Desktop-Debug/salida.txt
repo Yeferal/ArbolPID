@@ -1,0 +1,22 @@
+ Q7A‚        |             |-dolphin-+-bash---Arbol-+-Arbol-+-Arbol-+-Arbol
+        |             |         |              |       |       |-Arbol
+        |             |         |              |       |       |-Arbol
+        |             |         |              |       |       |-Arbol
+        |             |         |              |       |       `-Arbol
+        |             |         |              |       |-Arbol-+-Arbol
+        |             |         |              |       |       |-Arbol
+        |             |         |              |       |       |-Arbol
+        |             |         |              |       |       |-Arbol
+        |             |         |              |       |       `-Arbol
+        |             |         |              |       `-Arbol-+-Arbol
+        |             |         |              |               |-Arbol
+        |             |         |              |               |-Arbol
+        |             |         |              |               |-Arbol
+        |             |         |              |               `-Arbol
+        |             |         |              |-{Arbol}
+        |             |         |              |-{Arbol}
+        |             |         |              |-{Arbol}
+        |             |         |              |-{Arbol}
+        |             |         |              |-{Arbol}
+        |             |         |              `-{Arbol}
+
