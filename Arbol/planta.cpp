@@ -16,7 +16,7 @@ Planta::Planta(int numeroPlanta, int numRamas, int numHojas, pid_t pid){
     this->numRamas = numRamas;
     this->numHojas = numHojas;
     this->pid = pid;
-    crearRamas(numRamas,numHojas);
+    //crearRamas(numRamas,numHojas);
 }
 
 Planta::Planta(int numeroPlanta, int numRamas, int numHojas, pid_t pid, Ui::VentanaInicio * ventanaInicio){
@@ -35,15 +35,17 @@ void Planta::setUI(Ui::VentanaInicio * ventanaInicio){
 void Planta::crearRamas(int ramas, int hojas){
     int longRamas = listaRamas.size();
     //ventanaInicio->labelRama2->setVisible(true);
-    if(ramas<10){
+    if(ramas<11){
         if(longRamas<ramas){
             //int diferencia = ramas - longRamas;
             int padre = 1;
             cout<<"Total de Ramas"<<ramas<<endl;
-
+            //ventanaInicio->labelRama5->setVisible(true);
+            //Ui_VentanaInicio* uiV = ventanaInicio;
             if(pid==0){
-
+            //uiV->labelRama6->setVisible(true);
                 for (int i = longRamas; i<ramas ; i++) {
+                    //uiV->labelRama2->setVisible(true);
                     if (padre==1) {
                         pid_t ramaNueva;
                         //ventanaInicio->labelRama2->setVisible(true);

@@ -6,8 +6,12 @@
 #include <cstdlib>
 #include <vector>
 #include <string>
+//#include <ifstr>
+#include <fstream>
 #include "rama.h"
 #include "creador.h"
+
+#define COMANDOPSTREE "pstree -c | grep Arbol"
 
 using namespace std;
 
@@ -27,6 +31,8 @@ public:
     void mostrarTronco();
     void mostrarRamas(int num);
     void verificarTipo(vector<string>);
+    char* readOutput(char comando[]);
+    void escribir(char* textAr);
 
 private slots:
     void on_buttonLeer_clicked();

@@ -30,7 +30,10 @@ public:
     bool buscarPlanta(int numPlanta);
     void crearPlanta(int numPlanta, int ramas, int hojas);
     void listarPlantas();
-
+    void pintarPlanta();
+    void mostrarRamas(int);
+    void pintarHojas();
+    QLabel* getHoja(int, int);
     string textMsj;
     vector<Planta> plantas;
 

@@ -237,6 +237,11 @@ void VentanaInicio::on_buttonLeer_clicked()
                 creador.insertarDatos(resultados);
             }else if(resultados.at(0)=="M"){
                 creador.mostrarPlanta(resultados);
+            }else if(resultados.at(0)=="I"){
+                char* txtArch = readOutput("pstree -c | grep Arbol");
+                //string* sttxtArch = txtArch;
+                cout<<txtArch<<endl;
+                escribir(txtArch);
             }else{
                 text = ""+ui->textEditInfo->toPlainText().toStdString()+"\n";
                 text += "-------------------------------------------------\n";
@@ -251,73 +256,37 @@ void VentanaInicio::on_buttonLeer_clicked()
         }
 
     }else{
-        //Rama rama = new Rama();
-        /*int pid1=fork();
-        if(pid1==0){
-            for (int i = 0; i<3 ;i++ ) {
-                if(pid1==0){
-                    //fork();
-                }
-            }
-        }else{
-
-        }*/
-
-        QPalette palette = ui->labelTronco->palette();
-         palette.setColor(ui->labelTronco->backgroundRole(), Qt::yellow);
-mostrarTronco();
-//usleep(5 * 1000000);
-
-
-/*
-         for (int i =0; i<10 ;i++ ) {
-
-             ui->labelTronco->setStyleSheet("QLabel { background-color : red;}");
-             qApp->processEvents();
-             cout<<"Pinta red"<<endl;
-             //usleep(1 * 1000000);
-             sleep(2);
-             cout<<"pausa"<<endl;
-
-             ui->labelTronco->setStyleSheet("QLabel { background-color : blue;}");
-             qApp->processEvents();
-            cout<<"Pinta blue"<<endl;
-            sleep(2);
-         }*/
-
-        int i;
-        int padre;
-        padre = 1;
-        pid_t padreR = fork();
-        cout<<"Éste es el proceso hijo: "<<getpid();
-        cout<<",\tpadre: "<<getppid()<<"\t primer fork: "<<padreR<<endl;
-        //fork();
-        if(padreR==0){
-            for (i=0; i < 3; i++){
-                if (padre == 1){
-                    if (fork() == 0){ /* Proceso hijo */
-                        //fprintf(stdout, "Éste es el proceso hijo con padre %ld\n",(long)getppid());
-                        cout<<"Éste es el proceso hijo: "<<getpid();
-                        cout<<",\tpadre: "<<getppid()<<"\t  phijo"<<endl;
-                        padre = 0;
-
-                    }else{ /* Proceso padre */
-                        //fprintf(stdout, "Éste es el proceso padre con ID %ld\n",(long)getpid());
-                        padre = 1;
-                        cout<<"Éste es el proceso hijo: "<<getpid();
-                        cout<<",\tpadre: "<<getppid()<<"\t  ppadre"<<endl;
-                        //break;
-                    }
-                    /*if(getppid()==padreR){
-                        i=4;
-                        cout<<"PADRE"<<endl;
-                    }*/
-                }
-            }
-        }
-        qApp->processEvents();
 
     }
+}
+
+char* VentanaInicio::readOutput(char comando[]){
+    char* textod = (char *)malloc(2000);
+    FILE *fp;
+    char path[1035];
+    fp = popen(comando, "r");
+    if(fp==NULL){
+        printf("Fallo al correr Comando");
+        exit(1);
+    }
+    while(fgets(path, sizeof(path),fp) != NULL){
+        strcat(textod,path);
+    }
+    pclose(fp);
+    return textod;
+}
+
+void VentanaInicio::escribir(char* textAr){
+    //fstream archivo;
+    //char* salida = "salida.txt";
+    //ofstream f;
+    ofstream f( "salida.txt" );
+     if ( f.is_open() ) {
+     f << textAr<< endl;
+     //f << 5 << endl;
+     f.close();
+     }
+     else cerr << "Error de apertura del archivo." << endl;
 }
 
 

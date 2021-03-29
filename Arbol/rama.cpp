@@ -18,7 +18,7 @@ void Rama::setUI(Ui::VentanaInicio * ventanaInicio){
 
 void Rama::crearHojas(int hojas){
     int longHojas = listaHojas.size();
-    if(hojas<10){
+    if(hojas<11){
         if(longHojas<hojas){
             //int diferencia = ramas - longRamas;
             int padre = 1;
